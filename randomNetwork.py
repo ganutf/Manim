@@ -89,23 +89,36 @@ class MainScene(Scene):
         yellow_color = rgb_to_color(hex_to_rgb("#fcba04"))
         black_color = rgb_to_color(hex_to_rgb("#000000"))
 
-        redNetwork = Network(9, 0.4, 3, 7, red_color, self.camera.background_color)
+
+        yellowNetwork = Network(8, 0.4, 4, 5, yellow_color, self.camera.background_color)
+        yellowNetwork.scale(0.35)  # Set the size of the network
+        # Position the network in the desired location
+        yellowNetwork.move_to([-1.5, 2.6,1])  # Position the network in the upper right quadrant
+        self.play(Create(yellowNetwork))
+        self.wait(1)
+
+
+
+        redNetwork = Network(8, 0.4, 3, 6, red_color, self.camera.background_color)
         redNetwork.scale(0.35)  # Set the size of the network
         # Position the network in the desired location
-        redNetwork.move_to(RIGHT * 5, DOWN * 5)  # Position the network to the left of the scene
-
-        blueNetwork = Network(7, 0.4, 3, 7, blue_color, self.camera.background_color)
-        blueNetwork.scale(0.35)  # Set the size of the network
-        # Position the network in the desired location
-        blueNetwork.move_to(LEFT * 5, DOWN * 5)  # Position the network to the left of the scene
-
-        blueNetwork = Network(7, 0.4, 3, 7, blue_color, self.camera.background_color)
-        blueNetwork.scale(0.35)  # Set the size of the network
-        # Position the network in the desired location
-        blueNetwork.move_to(LEFT * 5, DOWN * 5)  # Position the network to the left of the scene
+        redNetwork.move_to([-1.5, -2.6,1])  # Position the network in the lower left quadrant
 
         self.play(Create(redNetwork))
-        self.wait(2)
+        self.wait(1)
 
+
+        blueNetwork = Network(9, 0.4, 4, 7, blue_color, self.camera.background_color)
+        blueNetwork.scale(0.35)  # Set the size of the network
+        # Position the network in the desired location
+        blueNetwork.move_to([-4.5, 0, 1])  # Position the network in the upper left quadrant
         self.play(Create(blueNetwork))
-        self.wait(2)
+        self.wait(1)
+
+        ccpNetwork = Network(10, 0.4, 5, 7, black_color, self.camera.background_color)
+        ccpNetwork.scale(0.35)  # Set the size of the network
+        # Position the network in the desired location
+        ccpNetwork.move_to([4.5, 0, 1])  # Position the network in the lower right quadrant
+        self.play(Create(ccpNetwork))
+        self.wait(1)
+
