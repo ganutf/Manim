@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/AdvertisingRevenueGraph/1185818338_531425643_223132457.mp4'
+file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/AdvertisingRevenueGraph/624642324_1325621395_3644832469.mp4'
+file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/AdvertisingRevenueGraph/624642324_4243900838_4162443941.mp4'
+file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/AdvertisingRevenueGraph/624642324_1141282389_2099265050.mp4'
