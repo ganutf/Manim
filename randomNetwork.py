@@ -2,25 +2,24 @@ from manim import *
 import random
 
 class Network(VGroup):
-    def __init__(self, N, base_size, min_distance, min_connections, max_connections, color, background_color):
+    def __init__(self, N, base_size, min_connections, max_connections, color, background_color):
         super().__init__()
         self.N = N
-        
         self.base_size = base_size
-        self.min_distance = min_distance
+        self.min_distance = 2
         self.min_connections = min_connections
         self.max_connections = max_connections
         self.color = color
         self.background_color = background_color
         self.stroke_width = 2.5
-        
+
         self.positions = self.generate_positions()
         self.nodes, self.white_nodes = self.create_nodes()
         self.edges = self.create_edges()
-        
+
         self.node_group = VGroup(*self.nodes, *self.white_nodes)
         self.edge_group = VGroup(*self.edges)
-        
+
         self.add(self.node_group, self.edge_group)
     
     def generate_positions(self):
@@ -85,11 +84,28 @@ class Network(VGroup):
 class MainScene(Scene):
     def construct(self):
         self.camera.background_color = color.WHITE
-        custom_color = rgb_to_color(hex_to_rgb("#dd1c1a"))
-        blueNetwork = Network(9, 0.3, 2, 3, 7, custom_color, self.camera.background_color)
-#        redNetwork = NetworkGenerator(9, 0.3, 2, 4, 7, color.RED)
-#        orangeNetwork = NetworkGenerator(9, 0.3, 2, 4, 7, color.ORANGE)
-#        ccpNetwork = NetworkGenerator(9, 0.3, 2, 4, 7, color.GREEN)
-        
+        red_color = rgb_to_color(hex_to_rgb("#dd1c1a"))
+        blue_color = rgb_to_color(hex_to_rgb("#0a3363"))
+        yellow_color = rgb_to_color(hex_to_rgb("#fcba04"))
+        black_color = rgb_to_color(hex_to_rgb("#000000"))
+
+        redNetwork = Network(9, 0.4, 3, 7, red_color, self.camera.background_color)
+        redNetwork.scale(0.35)  # Set the size of the network
+        # Position the network in the desired location
+        redNetwork.move_to(RIGHT * 5, DOWN * 5)  # Position the network to the left of the scene
+
+        blueNetwork = Network(7, 0.4, 3, 7, blue_color, self.camera.background_color)
+        blueNetwork.scale(0.35)  # Set the size of the network
+        # Position the network in the desired location
+        blueNetwork.move_to(LEFT * 5, DOWN * 5)  # Position the network to the left of the scene
+
+        blueNetwork = Network(7, 0.4, 3, 7, blue_color, self.camera.background_color)
+        blueNetwork.scale(0.35)  # Set the size of the network
+        # Position the network in the desired location
+        blueNetwork.move_to(LEFT * 5, DOWN * 5)  # Position the network to the left of the scene
+
+        self.play(Create(redNetwork))
+        self.wait(2)
+
         self.play(Create(blueNetwork))
         self.wait(2)
