@@ -1,2 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/TNS/Manim/media/videos/media/720p30/partial_movie_files/MediaNetworkScene/2016333726_634017564_1719657649.mp4'

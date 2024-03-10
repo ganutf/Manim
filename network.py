@@ -14,7 +14,7 @@ class NetworkDiagram(Scene):
             Dot(point=np.array([2.82, 1.41, 0]), radius=0.15, color=BLUE, z_index=3),
             Dot(point=np.array([4.23, 0, 0]), radius=0.15, color=BLUE, z_index=3)
         ]
-
+        
         # Create black nodes at the same positions as blue nodes but with 150% size
         black_nodes = [
             Dot(point=node.get_center(), radius=node.radius * 1.5, color=BLACK, z_index=2)

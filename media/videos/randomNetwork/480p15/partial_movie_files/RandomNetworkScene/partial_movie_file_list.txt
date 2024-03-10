@@ -1,7 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/TNS/Manim/media/videos/randomNetwork/480p15/partial_movie_files/RandomNetworkScene/931832650_1946078762_223132457.mp4'
-file 'file:C:/TNS/Manim/media/videos/randomNetwork/480p15/partial_movie_files/RandomNetworkScene/1905288516_1165985053_2443961065.mp4'
-file 'file:C:/TNS/Manim/media/videos/randomNetwork/480p15/partial_movie_files/RandomNetworkScene/1905288516_83857629_1927462490.mp4'
-file 'file:C:/TNS/Manim/media/videos/randomNetwork/480p15/partial_movie_files/RandomNetworkScene/1905288516_1165985053_351018645.mp4'
-file 'file:C:/TNS/Manim/media/videos/randomNetwork/480p15/partial_movie_files/RandomNetworkScene/1905288516_1883143510_2476403831.mp4'
-file 'file:C:/TNS/Manim/media/videos/randomNetwork/480p15/partial_movie_files/RandomNetworkScene/1905288516_1165985053_1406112133.mp4'

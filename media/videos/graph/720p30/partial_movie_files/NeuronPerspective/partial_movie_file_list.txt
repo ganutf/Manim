@@ -1,9 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/2016333726_906623797_2358810818.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/543634251_1704852926_1357990630.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/543634251_1017741686_195317947.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/543634251_1959358871_1212594528.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/543634251_3632209052_321269319.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/543634251_1704852926_1381664120.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/543634251_2817539502_315409253.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/720p30/partial_movie_files/NeuronPerspective/543634251_1704852926_3281042146.mp4'

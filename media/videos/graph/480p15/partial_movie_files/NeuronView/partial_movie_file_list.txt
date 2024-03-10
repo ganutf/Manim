@@ -1,5 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/NeuronView/1185818338_4069187484_1865638554.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/NeuronView/624642324_3409054496_2767091980.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/NeuronView/624642324_2372096158_1884856968.mp4'
-file 'file:C:/TNS/Manim/media/videos/graph/480p15/partial_movie_files/NeuronView/624642324_895004294_2094753596.mp4'
