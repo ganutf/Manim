@@ -1,5 +1,8 @@
 from manim import *
 import pandas as pd
+from manim_mobject_svg import *
+
+
 
 # Ensure you have the datasets in the same directory as the script or provide the correct path
 plot_data1 = pd.read_csv('../v2content/book6/chart/plot-data1.csv')
@@ -18,14 +21,31 @@ class AdvertisingRevenueGraph(Scene):
         axes = Axes(
             x_range=[1950, 2020, 10],
             y_range=[0, 80, 10],
-            axis_config={"color": BLUE},
+            axis_config={"color": BLACK},
             x_length=10,
-            y_length=6,
+            y_length=6,  # Adjust the y_length to match the x_length
             tips=False,
         )
 
+        self.camera.background_color = color.WHITE
+
+        textfont = "Suisse Works Book"
+
+        logo = SVGMobject("logo.svg")
+        logo.width = 0.5
+        logo.move_to([0,0,1])
+        logo.set_opacity(0.1)
+        self.add(logo)
+
+
+
         # Add the axis labels
-        x_labels = axes.get_axis_labels(x_label=Text("Year", font_size=12).set_color(WHITE), y_label= Text("Revenue in Billions", font_size=12).set_color(WHITE))
+        
+        axes_labels = axes.get_axis_labels(
+            x_label=Text("Year", font=textfont, font_size=18, weight=BOLD).set_color(BLACK),
+            y_label=Text("Revenue in Billions", font=textfont, font_size=18).set_color(BLACK)
+        )
+
 
         # Extract data for plotting
         def get_plot_data(df):
@@ -40,9 +60,15 @@ class AdvertisingRevenueGraph(Scene):
         x_values3, y_values3 = get_plot_data(plot_data3)
         x_values4, y_values4 = get_plot_data(plot_data4)
 
+        blue_color = rgb_to_color(hex_to_rgb("#0D4382"))
+        red_color = rgb_to_color(hex_to_rgb("#dd1c1a"))
+        yellow_color = rgb_to_color(hex_to_rgb("#fcba04"))
+        green_color = rgb_to_color(hex_to_rgb("#61B22E"))
+
         # Create the graph lines
-        line_color = [BLUE, RED, GREEN, PINK]
+        line_color = [blue_color, red_color, green_color, PINK]
         graphs = VGroup()
+        
         for i, (x_values, y_values) in enumerate(zip([x_values1, x_values2, x_values3, x_values4], 
                                                       [y_values1, y_values2, y_values3, y_values4])):
             graph = axes.plot_line_graph(
@@ -55,20 +81,26 @@ class AdvertisingRevenueGraph(Scene):
             
         # Create and add labels for the graph lines
         labels = VGroup(
-            Text("Newspaper Print Only", font_size=12).set_color(BLUE),
-            Text("Including Digital", font_size=12).set_color(RED),
-            Text("Facebook Revenue", font_size=12).set_color(GREEN),
-            Text("Google Revenue", font_size=12).set_color(PINK),
+            Text("Newspaper Print Only", font="Suisse Works Book", font_size=160, weight=BOLD).scale(0.1).set_color(blue_color),
+            Text("Including Digital", font=textfont, font_size=160).scale(0.1).set_color(red_color),
+            Text("Facebook Revenue", font=textfont, font_size=160).scale(0.1).set_color(green_color),
+            Text("Google Revenue", font=textfont, font_size=160).scale(0.1).set_color(PINK),
         )
+
+
         # Arrange labels vertically with a smaller buffer
         labels.arrange(DOWN, aligned_edge=LEFT, buff=0.2)
+
         # Position the group of labels to the top left corner of the screen
-        labels.to_edge(UP, buff=1)
+        labels.to_edge(LEFT * 3 + UP * 2, buff=1)
 
         # Display the axes, labels, and the graph lines
-        self.play(Create(axes), Write(x_labels))
+        self.play(Create(axes), Write(axes_labels))
         self.play(*[Create(graph) for graph in graphs])
         self.play(*[Write(label) for label in labels])
-
         # Keep the scene displayed
         self.wait(2)
+
+        scene_group = VGroup(axes, axes_labels, graphs, labels, logo)
+        scene_group.to_svg("test.svg", padding=1)
+

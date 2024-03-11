@@ -94,7 +94,8 @@ class MainScene(Scene):
         yellowNetwork.scale(0.35)  # Set the size of the network
         # Position the network in the desired location
         yellowNetwork.move_to([-1.5, 2.6,1])  # Position the network in the upper right quadrant
-        self.play(Create(yellowNetwork))
+        yellowText = Text("Decentralized Media", font_size=16, color=yellow_color).next_to(yellowNetwork, DOWN)
+        self.play(Create(yellowNetwork), Write(yellowText))
         self.wait(1)
 
 
@@ -103,8 +104,8 @@ class MainScene(Scene):
         redNetwork.scale(0.35)  # Set the size of the network
         # Position the network in the desired location
         redNetwork.move_to([-1.5, -2.6,1])  # Position the network in the lower left quadrant
-
-        self.play(Create(redNetwork))
+        redText = Text("Red Media", font_size=16, color=red_color).next_to(redNetwork, RIGHT)
+        self.play(Create(redNetwork), Write(redText))
         self.wait(1)
 
 
@@ -112,13 +113,15 @@ class MainScene(Scene):
         blueNetwork.scale(0.35)  # Set the size of the network
         # Position the network in the desired location
         blueNetwork.move_to([-4.5, 0, 1])  # Position the network in the upper left quadrant
-        self.play(Create(blueNetwork))
+        blueText = Text("Establishment Storytellers", font_size=16, color=blue_color).next_to(blueNetwork, DOWN)
+        self.play(Create(blueNetwork), Write(blueText))
         self.wait(1)
 
-        ccpNetwork = Network(10, 0.4, 5, 7, black_color, self.camera.background_color)
+        ccpNetwork = Network(10, 0.4, 4, 6, black_color, self.camera.background_color)
         ccpNetwork.scale(0.35)  # Set the size of the network
         # Position the network in the desired location
         ccpNetwork.move_to([4.5, 0, 1])  # Position the network in the lower right quadrant
-        self.play(Create(ccpNetwork))
+        ccpText = Text("CCP Media", font_size=16, color=black_color).next_to(ccpNetwork, DOWN)
+        self.play(Create(ccpNetwork), Write(ccpText))
         self.wait(1)
 

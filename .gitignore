@@ -1,3 +1,4 @@
 media/videos/*
 media/*
 __pycache__/*
+*.svg
