@@ -2,7 +2,11 @@ from manim import *
 import pandas as pd
 from manim_mobject_svg import *
 
-
+config.frame_width = 9
+config.frame_height = 16
+config.pixel_width = 1080
+config.pixel_height = 1920
+config.background_color = WHITE
 
 # Ensure you have the datasets in the same directory as the script or provide the correct path
 plot_data1 = pd.read_csv('../v2content/book6/chart/plot-data1.csv')
@@ -10,49 +14,50 @@ plot_data2 = pd.read_csv('../v2content/book6/chart/plot-data2.csv')
 plot_data3 = pd.read_csv('../v2content/book6/chart/plot-data3.csv')
 plot_data4 = pd.read_csv('../v2content/book6/chart/plot-data4.csv')
 
-print("Dataset 1 head:", plot_data1.head())
-print("Dataset 2 head:", plot_data2.head())
-print("Dataset 3 head:", plot_data3.head())
-print("Dataset 4 head:", plot_data4.head())
-
 class AdvertisingRevenueGraph(Scene):
     def construct(self):
+
+
+        plane = NumberPlane(x_range=(-4, 4), y_range=(-7, 7), background_line_style={
+                "stroke_color": TEAL,
+                "stroke_width": 2,
+                "stroke_opacity": 0.1
+            })
+
+        t = Triangle(color=PURPLE, fill_opacity=0.01)
+        #self.add(plane)
+
+        
+        textfont = "Suisse Works Book"
+
         # Create the axes
         axes = Axes(
             x_range=[1950, 2020, 10],
             y_range=[0, 80, 10],
-            axis_config={"color": BLACK},
-            x_length=10,
-            y_length=6,  # Adjust the y_length to match the x_length
+            axis_config={
+                "include_numbers": True,
+                "color": DARK_GRAY,
+                'decimal_number_config' : {
+                    'num_decimal_places' : 0,
+                    'color' : DARK_GRAY,
+                },
+                "font_size": 28,
+            },
+            x_length=7,
+            y_length=12,
             tips=False,
         )
 
-        self.camera.background_color = color.WHITE
-
-        textfont = "Suisse Works Book"
-
-        logo = SVGMobject("logo.svg")
-        logo.width = 0.5
-        logo.move_to([0,0,1])
-        logo.set_opacity(0.1)
-        self.add(logo)
-
-
-
         # Add the axis labels
-        
         axes_labels = axes.get_axis_labels(
-            x_label=Text("Year", font=textfont, font_size=18, weight=BOLD).set_color(BLACK),
-            y_label=Text("Revenue in Billions", font=textfont, font_size=18).set_color(BLACK)
+            x_label=Text("Year", font=textfont, font_size=12, weight=BOLD).set_color(BLACK),
+            y_label=Text("Revenue in Billions", font=textfont, font_size=12).set_color(BLACK)
         )
-
 
         # Extract data for plotting
         def get_plot_data(df):
             df['x'] = pd.to_datetime(df['x'])
             df['year'] = df['x'].dt.year + (df['x'].dt.dayofyear / 365.25)
-    
-            # Notice the space in ' y'
             return df['year'], df[' y']
 
         x_values1, y_values1 = get_plot_data(plot_data1)
@@ -81,26 +86,24 @@ class AdvertisingRevenueGraph(Scene):
             
         # Create and add labels for the graph lines
         labels = VGroup(
-            Text("Newspaper Print Only", font="Suisse Works Book", font_size=160, weight=BOLD).scale(0.1).set_color(blue_color),
-            Text("Including Digital", font=textfont, font_size=160).scale(0.1).set_color(red_color),
-            Text("Facebook Revenue", font=textfont, font_size=160).scale(0.1).set_color(green_color),
-            Text("Google Revenue", font=textfont, font_size=160).scale(0.1).set_color(PINK),
+            Text("Newspaper Print Only", font=textfont, font_size=320).scale(0.07).set_color(blue_color),
+            Text("Including Digital", font=textfont, font_size=320).scale(0.07).set_color(red_color),
+            Text("Facebook Revenue", font=textfont, font_size=320).scale(0.07).set_color(green_color),
+            Text("Google Revenue", font=textfont, font_size=320).scale(0.07).set_color(PINK),
         )
-
 
         # Arrange labels vertically with a smaller buffer
         labels.arrange(DOWN, aligned_edge=LEFT, buff=0.2)
 
         # Position the group of labels to the top left corner of the screen
-        labels.to_edge(LEFT * 3 + UP * 2, buff=1)
+        labels.to_edge(UP * 6 + LEFT * 3, buff=0.5)
 
-        # Display the axes, labels, and the graph lines
-        self.play(Create(axes), Write(axes_labels))
-        self.play(*[Create(graph) for graph in graphs])
-        self.play(*[Write(label) for label in labels])
-        # Keep the scene displayed
+        # Create the scene group
+        scene_group = VGroup(axes, axes_labels, graphs, labels)
+
+        # Center the scene group
+        scene_group.center()
+
+        # Display the scene
+        self.add(scene_group)
         self.wait(2)
-
-        scene_group = VGroup(axes, axes_labels, graphs, labels, logo)
-        scene_group.to_svg("test.svg", padding=1)
-
